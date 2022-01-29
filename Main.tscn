@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Block Out.png" type="Texture" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -19,7 +19,7 @@
 [ext_resource path="res://Bosses/Rock Head Boss/Rock Head Bottom Sprite Sheet.png" type="Texture" id=17]
 [ext_resource path="res://Bosses/Rock Head Boss/Idle 1.tres" type="Animation" id=18]
 [ext_resource path="res://Bosses/Rock Head Boss/Idle 2.tres" type="Animation" id=19]
-[ext_resource path="res://Bosses/Rock Head Boss/Core Laser Transition.tres" type="Animation" id=20]
+[ext_resource path="res://Bosses/Rock Head Boss/Charging Laser Transition Out.tres" type="Animation" id=20]
 [ext_resource path="res://Bosses/Rock Head Boss/Charging Laser Transition.tres" type="Animation" id=21]
 [ext_resource path="res://Bosses/Rock Head Boss/Charging Laser.tres" type="Animation" id=22]
 [ext_resource path="res://Player/Sprites/Player-Sheet.png" type="Texture" id=23]
@@ -28,6 +28,8 @@
 [ext_resource path="res://Player/Bullet/Bullet.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Bosses/Rock Head Boss/Animations/Laser/Charged Laser.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Bosses/Spider Boss/Animations/Simple Missle/Simple Missle.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Bosses/Rock Head Boss/Core Laser Shoot.tres" type="Animation" id=29]
+[ext_resource path="res://Misc Sprites/Laser Light.png" type="Texture" id=30]
 
 [sub_resource type="Environment" id=10]
 background_mode = 4
@@ -226,7 +228,43 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 392, 136 ) ]
+"values": [ Vector2( 412, 136 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bottom Sprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Top Sprite:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Top Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 412, 127 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -347,6 +385,7 @@ anims/RESET = SubResource( 12 )
 position = Vector2( 22, -1 )
 
 [node name="Spider Boss" type="Node2D" parent="."]
+visible = false
 
 [node name="Boss Sprite" type="Sprite" parent="Spider Boss"]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
@@ -354,7 +393,7 @@ position = Vector2( 296, 40 )
 texture = ExtResource( 14 )
 centered = false
 hframes = 8
-frame = 5
+frame = 7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spider Boss"]
 autoplay = "Spider Boss Idle"
@@ -363,14 +402,26 @@ autoplay = "Spider Boss Idle"
 [node name="AnimationTree" type="AnimationTree" parent="Spider Boss"]
 
 [node name="Simple Missle" parent="Spider Boss" instance=ExtResource( 28 )]
+frame = 2
+
+[node name="Simple Missle2" parent="Spider Boss" instance=ExtResource( 28 )]
+position = Vector2( 294, 103 )
+frame = 2
+
+[node name="Simple Missle3" parent="Spider Boss" instance=ExtResource( 28 )]
+position = Vector2( 218, 122 )
+frame = 2
+
+[node name="Simple Missle4" parent="Spider Boss" instance=ExtResource( 28 )]
+position = Vector2( 218, 83 )
+frame = 2
 
 [node name="Rock Head Boss" type="Node2D" parent="."]
-visible = false
 position = Vector2( -104, -72 )
 
 [node name="Top Sprite" type="Sprite" parent="Rock Head Boss"]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( 412, 115 )
+position = Vector2( 412, 127 )
 texture = ExtResource( 16 )
 centered = false
 hframes = 12
@@ -378,41 +429,49 @@ vframes = 4
 
 [node name="Bottom Sprite" type="Sprite" parent="Rock Head Boss"]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( 392, 136 )
+position = Vector2( 412, 136 )
 texture = ExtResource( 17 )
 centered = false
 hframes = 12
 vframes = 4
-frame = 24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rock Head Boss"]
 autoplay = "Rock Head Idle 1"
+"anims/Charging Laser Transition Out" = ExtResource( 20 )
 anims/RESET = SubResource( 2 )
 "anims/Rock Head Charging Laser" = ExtResource( 22 )
 "anims/Rock Head Charging Laser Transition" = ExtResource( 21 )
 "anims/Rock Head Core Laser Transition" = ExtResource( 20 )
 "anims/Rock Head Idle 1" = ExtResource( 18 )
 "anims/Rock Head Idle 2" = ExtResource( 19 )
+"anims/Rock HeadCore Laser Shoot" = ExtResource( 29 )
 "anims/Spider Boss Idle" = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Rock Head Boss"]
 
 [node name="Charged Laser" parent="Rock Head Boss" instance=ExtResource( 27 )]
-frame = 2
+position = Vector2( 480, 199 )
+frame = 1
 
 [node name="Charged Laser2" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 417, 208 )
+position = Vector2( 444, 199 )
 
 [node name="Charged Laser3" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 382, 208 )
-frame = 0
+position = Vector2( 409, 199 )
+frame = 1
 
 [node name="Charged Laser4" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 347, 208 )
-frame = 0
+position = Vector2( 374, 199 )
+frame = 1
 
 [node name="Charged Laser5" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 314, 208 )
+position = Vector2( 341, 199 )
+
+[node name="Light2D" type="Light2D" parent="Rock Head Boss"]
+position = Vector2( 517, 222 )
+texture = ExtResource( 30 )
+texture_scale = 3.0
+energy = 0.6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
