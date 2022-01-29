@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Block Out.png" type="Texture" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Player/Animations/Player Idle.tres" type="Animation" id=24]
 [ext_resource path="res://Player.gd" type="Script" id=25]
 [ext_resource path="res://Player/Bullet/Bullet.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Bosses/Spider Boss/Animations/Missle Fire Smoke/Missle Fire Smoke-Sheet.png" type="Texture" id=27]
 [ext_resource path="res://Bosses/Spider Boss/Animations/Simple Missle/Simple Missle.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Bosses/Rock Head Boss/Core Laser Shoot.tres" type="Animation" id=29]
 [ext_resource path="res://Misc Sprites/Laser Light.png" type="Texture" id=30]
@@ -204,6 +205,125 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 27 )
+region = Rect2( 0, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 27 )
+region = Rect2( 30, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 27 )
+region = Rect2( 60, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 27 )
+region = Rect2( 90, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 27 )
+region = Rect2( 120, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 27 )
+region = Rect2( 150, 0, 30, 30 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 27 )
+region = Rect2( 180, 0, 30, 30 )
+
+[sub_resource type="SpriteFrames" id=23]
+animations = [ {
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Missile Fire Smoke:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Spider Boss Missle Mode"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 16, 17, 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Missile Fire Smoke:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Spider Boss Missle Trans_In"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Boss Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Missile Fire Smoke:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -266,6 +386,202 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 412, 127 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bottom Sprite:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 36 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Bottom Sprite:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Particles2D:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Particles2D:amount")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 20 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Light2D:enabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Light2D:energy")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.3 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Rock Head Core Laser Transition"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Top Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bottom Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bottom Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 412, 113 ), Vector2( 412, 127 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Top Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 412, 120 ), Vector2( 412, 113 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Top Sprite:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Bottom Sprite:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Particles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2.1, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Particles2D:amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 2.1, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 50, 200 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Light2D:enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Light2D:energy")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 2.1, 3 ),
+"transitions": PoolRealArray( 1, 0.133972 ),
+"update": 0,
+"values": [ 0.3, 0.8 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Spider Boss Idle"
@@ -283,6 +599,16 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
+
+[sub_resource type="ParticlesMaterial" id=25]
+emission_shape = 1
+emission_sphere_radius = 50.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 10.0
+radial_accel = -500.0
 
 [node name="Main" type="Node2D"]
 
@@ -362,6 +688,9 @@ polygon = PoolVector2Array( 1, 231, 83, 231, 117, 236, 181, 236, 335, 227, 481, 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 51, 209 )
 script = ExtResource( 25 )
+speed = 200
+gravity = 1500
+jump_impulse = 500
 Bullet = ExtResource( 26 )
 
 [node name="Player Sprite" type="Sprite" parent="Player"]
@@ -382,7 +711,9 @@ autoplay = "Player Idle"
 anims/RESET = SubResource( 12 )
 
 [node name="Bullet Spawn Point" type="Position2D" parent="Player"]
-position = Vector2( 22, -1 )
+position = Vector2( 22, 0 )
+
+[node name="Dash Tween" type="Tween" parent="Player"]
 
 [node name="Spider Boss" type="Node2D" parent="."]
 
@@ -392,11 +723,94 @@ position = Vector2( 296, 40 )
 texture = ExtResource( 14 )
 centered = false
 hframes = 8
-frame = 7
+vframes = 3
+frame = 9
+
+[node name="Missile Fire Smoke" type="Node2D" parent="Spider Boss"]
+position = Vector2( 296, 40 )
+
+[node name="Missle Fire Smoke" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 52, 15 )
+frames = SubResource( 23 )
+frame = 4
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke2" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 54, 37 )
+frames = SubResource( 23 )
+frame = 2
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke3" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 97, 12 )
+frames = SubResource( 23 )
+frame = 2
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke4" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 105, 20 )
+frames = SubResource( 23 )
+frame = 1
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke5" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 97, 28 )
+frames = SubResource( 23 )
+frame = 1
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke6" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 105, 32 )
+frames = SubResource( 23 )
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke7" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 95, 39 )
+frames = SubResource( 23 )
+frame = 6
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke8" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 108, 42 )
+frames = SubResource( 23 )
+frame = 6
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke9" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 59, 26 )
+frames = SubResource( 23 )
+frame = 5
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke10" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 47, 31 )
+frames = SubResource( 23 )
+frame = 5
+playing = true
+centered = false
+
+[node name="Missle Fire Smoke11" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
+position = Vector2( 62, 11 )
+frames = SubResource( 23 )
+frame = 4
+playing = true
+centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spider Boss"]
-autoplay = "Spider Boss Idle"
+autoplay = "Spider Boss Missle Mode"
+anims/RESET = SubResource( 13 )
 "anims/Spider Boss Idle" = ExtResource( 15 )
+"anims/Spider Boss Missle Mode" = SubResource( 14 )
+"anims/Spider Boss Missle Trans_In" = SubResource( 15 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Spider Boss"]
 
@@ -413,13 +827,14 @@ position = Vector2( 218, 83 )
 
 [node name="Laser Ball" parent="Spider Boss" instance=ExtResource( 31 )]
 position = Vector2( 333, 71 )
-frame = 3
+frame = 6
 
 [node name="Laser Ball 2" parent="Spider Boss" instance=ExtResource( 31 )]
 position = Vector2( 281, 55 )
-frame = 2
+frame = 5
 
 [node name="Rock Head Boss" type="Node2D" parent="."]
+visible = false
 position = Vector2( -104, -72 )
 
 [node name="Top Sprite" type="Sprite" parent="Rock Head Boss"]
@@ -437,26 +852,37 @@ texture = ExtResource( 17 )
 centered = false
 hframes = 12
 vframes = 4
+frame = 36
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rock Head Boss"]
-autoplay = "Rock Head Idle 1"
-"anims/Charging Laser Transition Out" = ExtResource( 20 )
+autoplay = "Rock Head Core Laser Transition"
 anims/RESET = SubResource( 2 )
 "anims/Rock Head Charging Laser" = ExtResource( 22 )
 "anims/Rock Head Charging Laser Transition" = ExtResource( 21 )
-"anims/Rock Head Core Laser Transition" = ExtResource( 20 )
+"anims/Rock Head Core Laser Shoot" = ExtResource( 29 )
+"anims/Rock Head Core Laser Transition" = SubResource( 24 )
+"anims/Rock Head Core Laser Transition Out" = ExtResource( 20 )
 "anims/Rock Head Idle 1" = ExtResource( 18 )
 "anims/Rock Head Idle 2" = ExtResource( 19 )
-"anims/Rock HeadCore Laser Shoot" = ExtResource( 29 )
 "anims/Spider Boss Idle" = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Rock Head Boss"]
 
 [node name="Light2D" type="Light2D" parent="Rock Head Boss"]
 position = Vector2( 517, 222 )
+enabled = false
 texture = ExtResource( 30 )
 texture_scale = 3.0
-energy = 0.6
+energy = 0.3
+
+[node name="Particles2D" type="Particles2D" parent="Rock Head Boss"]
+position = Vector2( 516, 229 )
+emitting = false
+amount = 20
+lifetime = 0.4
+preprocess = 1.0
+randomness = 0.2
+process_material = SubResource( 25 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
