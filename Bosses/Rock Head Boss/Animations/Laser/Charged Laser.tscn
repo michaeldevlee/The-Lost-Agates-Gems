@@ -41,7 +41,6 @@ orbit_velocity_random = 0.0
 modulate = Color( 1.3, 1.3, 1.3, 1 )
 position = Vector2( 453, 208 )
 frames = SubResource( 17 )
-frame = 2
 playing = true
 centered = false
 

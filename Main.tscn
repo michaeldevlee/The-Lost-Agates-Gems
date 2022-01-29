@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Block Out.png" type="Texture" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -31,6 +31,10 @@
 [ext_resource path="res://Bosses/Rock Head Boss/Core Laser Shoot.tres" type="Animation" id=29]
 [ext_resource path="res://Misc Sprites/Laser Light.png" type="Texture" id=30]
 [ext_resource path="res://UI/Player HP Fill.png" type="Texture" id=31]
+[ext_resource path="res://UI/Boss HP BG.png" type="Texture" id=32]
+[ext_resource path="res://UI/Boss HP Fill.png" type="Texture" id=33]
+[ext_resource path="res://Player HP.gd" type="Script" id=34]
+[ext_resource path="res://Boss HP.gd" type="Script" id=35]
 
 [sub_resource type="Environment" id=10]
 background_mode = 4
@@ -732,74 +736,75 @@ position = Vector2( 296, 40 )
 [node name="Missle Fire Smoke" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 52, 15 )
 frames = SubResource( 23 )
-frame = 6
+frame = 2
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke2" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 54, 37 )
 frames = SubResource( 23 )
-frame = 4
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke3" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 97, 12 )
 frames = SubResource( 23 )
-frame = 4
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke4" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 105, 20 )
 frames = SubResource( 23 )
-frame = 3
+frame = 6
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke5" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 97, 28 )
 frames = SubResource( 23 )
-frame = 3
+frame = 6
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke6" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 105, 32 )
 frames = SubResource( 23 )
-frame = 2
+frame = 5
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke7" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 95, 39 )
 frames = SubResource( 23 )
-frame = 2
+frame = 5
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke8" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 108, 42 )
 frames = SubResource( 23 )
-frame = 2
+frame = 5
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke9" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 59, 26 )
 frames = SubResource( 23 )
+frame = 3
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke10" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 47, 31 )
 frames = SubResource( 23 )
+frame = 3
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke11" type="AnimatedSprite" parent="Spider Boss/Missile Fire Smoke"]
 position = Vector2( 62, 11 )
 frames = SubResource( 23 )
+frame = 3
 playing = true
 centered = false
 
@@ -813,7 +818,6 @@ anims/RESET = SubResource( 13 )
 [node name="AnimationTree" type="AnimationTree" parent="Spider Boss"]
 
 [node name="Rock Head Boss" type="Node2D" parent="."]
-visible = false
 position = Vector2( -104, -72 )
 
 [node name="Top Sprite" type="Sprite" parent="Rock Head Boss"]
@@ -851,7 +855,7 @@ anims/RESET = SubResource( 2 )
 position = Vector2( 517, 222 )
 enabled = false
 texture = ExtResource( 30 )
-texture_scale = 3.0
+texture_scale = 1.5
 energy = 0.3
 
 [node name="Particles2D" type="Particles2D" parent="Rock Head Boss"]
@@ -881,13 +885,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureProgress" type="TextureProgress" parent="GUI/UI"]
+[node name="Player HP" type="TextureProgress" parent="GUI/UI"]
 margin_left = 12.0
 margin_top = 16.0
 margin_right = 150.0
 margin_bottom = 56.0
-value = 100.0
+max_value = 1000.0
+value = 1000.0
 texture_under = ExtResource( 28 )
 texture_progress = ExtResource( 31 )
+script = ExtResource( 34 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player_path = NodePath("../../../Player")
+
+[node name="Boss HP" type="TextureProgress" parent="GUI/UI"]
+margin_left = 321.0
+margin_top = 16.0
+margin_right = 459.0
+margin_bottom = 56.0
+value = 100.0
+texture_under = ExtResource( 32 )
+texture_progress = ExtResource( 33 )
+script = ExtResource( 35 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Camera2D/Shake Timer" to="Camera2D" method="_on_Shake_Timer_timeout"]
