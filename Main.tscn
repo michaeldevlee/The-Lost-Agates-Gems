@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Block Out.png" type="Texture" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -24,12 +24,16 @@
 [ext_resource path="res://Bosses/Rock Head Boss/Charging Laser.tres" type="Animation" id=22]
 [ext_resource path="res://Player/Sprites/Player-Sheet.png" type="Texture" id=23]
 [ext_resource path="res://Player/Animations/Player Idle.tres" type="Animation" id=24]
+[ext_resource path="res://Bosses/Spider Boss/Spider Boss.gd" type="Script" id=25]
+[ext_resource path="res://AnimationTree.gd" type="Script" id=26]
+[ext_resource path="res://Main.gd" type="Script" id=27]
+[ext_resource path="res://Player.gd" type="Script" id=28]
 
-[sub_resource type="Environment" id=10]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 glow_enabled = true
 
-[sub_resource type="Shader" id=8]
+[sub_resource type="Shader" id=2]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -62,8 +66,8 @@ void vertex() {
     VERTEX.x += getWind(VERTEX.xy, UV, time);
 }"
 
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 8 )
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
 shader_param/speed = 1.0
 shader_param/minStrength = 0.05
 shader_param/maxStrength = 0.01
@@ -164,9 +168,9 @@ shader_param/distortion = null
 shader_param/heightOffset = 0.2
 shader_param/offset = 0.0
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=8]
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 resource_name = "Player Walk"
 length = 0.3
 loop = true
@@ -183,7 +187,7 @@ tracks/0/keys = {
 "values": [ 10, 11, 12 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Player Sprite:frame")
@@ -198,7 +202,89 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=11]
+resource_name = "colossus_beam"
+
+[sub_resource type="Animation" id=12]
+resource_name = "pew_laser_eyes"
+
+[sub_resource type="Animation" id=13]
+resource_name = "shoot_single_missile"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Spider:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "shoot_tracking_missiles"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "colossus_beam"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Spider Boss Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "pew_laser_eyes"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "shoot_single_missile"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "shoot_tracking_missiles"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/colossus_beam/node = SubResource( 15 )
+states/colossus_beam/position = Vector2( 819, 41 )
+states/idle/node = SubResource( 16 )
+states/idle/position = Vector2( 565, 160 )
+states/pew_laser_eyes/node = SubResource( 17 )
+states/pew_laser_eyes/position = Vector2( 460, 41 )
+states/shoot_single_missile/node = SubResource( 18 )
+states/shoot_single_missile/position = Vector2( 393, 241 )
+states/shoot_tracking_missiles/node = SubResource( 19 )
+states/shoot_tracking_missiles/position = Vector2( 792, 241 )
+transitions = [ "idle", "pew_laser_eyes", SubResource( 20 ), "pew_laser_eyes", "idle", SubResource( 21 ), "idle", "colossus_beam", SubResource( 22 ), "colossus_beam", "idle", SubResource( 23 ), "shoot_tracking_missiles", "idle", SubResource( 24 ), "idle", "shoot_tracking_missiles", SubResource( 25 ), "idle", "shoot_single_missile", SubResource( 26 ), "shoot_single_missile", "idle", SubResource( 27 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+
+[sub_resource type="Animation" id=30]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top Sprite:frame")
@@ -225,8 +311,7 @@ tracks/1/keys = {
 "values": [ Vector2( 392, 136 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Spider Boss Idle"
+[sub_resource type="Animation" id=31]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -243,9 +328,10 @@ tracks/0/keys = {
 }
 
 [node name="Main" type="Node2D"]
+script = ExtResource( 27 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 10 )
+environment = SubResource( 1 )
 
 [node name="Background" type="Node2D" parent="."]
 visible = false
@@ -262,7 +348,7 @@ texture = ExtResource( 11 )
 centered = false
 
 [node name="Distant Forest 2" type="Sprite" parent="Background"]
-material = SubResource( 9 )
+material = SubResource( 3 )
 texture = ExtResource( 4 )
 centered = false
 
@@ -316,6 +402,7 @@ centered = false
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 51, 209 )
+script = ExtResource( 28 )
 
 [node name="Player Sprite" type="Sprite" parent="Player"]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
@@ -326,31 +413,44 @@ hframes = 5
 vframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 autoplay = "Player Idle"
 "anims/Player Idle" = ExtResource( 24 )
-"anims/Player Walk" = SubResource( 11 )
-anims/RESET = SubResource( 12 )
+"anims/Player Walk" = SubResource( 9 )
+anims/RESET = SubResource( 10 )
 
-[node name="Spider Boss" type="Node2D" parent="."]
-visible = false
+[node name="Spider Boss" type="StaticBody2D" parent="."]
+script = ExtResource( 25 )
 
-[node name="Boss Sprite" type="Sprite" parent="Spider Boss"]
+[node name="Spider" type="Sprite" parent="Spider Boss"]
 position = Vector2( 296, 40 )
 texture = ExtResource( 14 )
 centered = false
 hframes = 8
-frame = 5
+frame = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spider Boss"]
+polygon = PoolVector2Array( 349.647, 55.9358, 349.647, 100.924, 370.67, 100.924, 371.931, 116.06, 364.784, 113.958, 361.42, 111.014, 356.375, 111.014, 351.75, 116.901, 348.807, 122.787, 349.647, 127.412, 349.647, 130.355, 337.034, 148.855, 333.25, 149.696, 326.943, 163.571, 325.261, 171.139, 326.523, 177.445, 326.102, 182.911, 325.682, 187.116, 326.523, 190.9, 326.523, 215.706, 330.727, 222.854, 333.25, 230.842, 335.352, 218.649, 331.568, 209.82, 331.148, 205.195, 334.091, 195.104, 334.932, 183.752, 341.239, 172.4, 343.761, 152.639, 357.216, 132.037, 363.522, 132.037, 368.147, 126.571, 373.193, 129.935, 374.874, 131.616, 374.874, 139.605, 372.772, 144.23, 370.67, 152.639, 364.784, 153.9, 361.84, 161.048, 360.579, 171.559, 363.522, 179.127, 367.306, 185.013, 368.988, 186.695, 376.556, 217.808, 380.761, 227.479, 383.283, 227.899, 382.863, 208.138, 378.238, 199.729, 379.079, 181.65, 382.863, 173.241, 382.022, 158.525, 384.124, 144.65, 386.227, 146.753, 390.431, 152.639, 394.635, 150.537, 400.101, 151.798, 406.828, 146.753, 411.453, 144.65, 412.715, 150.116, 409.772, 155.582, 414.817, 166.514, 412.294, 177.445, 411.874, 186.695, 408.931, 193.843, 408.51, 199.729, 410.612, 211.922, 411.874, 197.627, 421.124, 169.877, 424.908, 165.252, 427.01, 149.275, 423.226, 144.23, 420.703, 144.65, 414.397, 135.4, 412.715, 135.4, 411.453, 129.094, 427.851, 126.992, 436.68, 129.935, 440.464, 129.094, 455.18, 142.548, 455.18, 148.855, 460.646, 156.002, 462.748, 192.161, 464.009, 202.252, 461.487, 204.354, 461.487, 224.115, 459.384, 226.638, 463.169, 226.638, 467.373, 208.138, 469.055, 196.365, 470.316, 164.832, 468.634, 153.059, 471.577, 143.389, 470.737, 140.025, 460.646, 134.56, 457.282, 134.98, 448.032, 123.628, 444.669, 114.378, 437.942, 110.174, 429.953, 112.696, 428.692, 116.06, 415.237, 118.162, 413.976, 115.639, 416.078, 111.014, 414.397, 108.071, 414.817, 103.026, 431.635, 91.6739, 432.476, 58.4585, 422.805, 50.4699, 400.101, 52.1517, 401.363, 60.5607, 389.17, 59.7198, 384.965, 62.6629, 380.761, 55.9358, 364.363, 52.9926 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Spider Boss"]
 autoplay = "Spider Boss Idle"
 "anims/Spider Boss Idle" = ExtResource( 15 )
+anims/colossus_beam = SubResource( 11 )
+anims/pew_laser_eyes = SubResource( 12 )
+anims/shoot_single_missile = SubResource( 13 )
+anims/shoot_tracking_missiles = SubResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Spider Boss"]
+tree_root = SubResource( 28 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 29 )
+script = ExtResource( 26 )
 
 [node name="Rock Head Boss" type="Node2D" parent="."]
+visible = false
 position = Vector2( -104, -72 )
 
 [node name="Top Sprite" type="Sprite" parent="Rock Head Boss"]
@@ -372,13 +472,13 @@ frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Rock Head Boss"]
 autoplay = "Rock Head Idle 1"
-anims/RESET = SubResource( 2 )
+anims/RESET = SubResource( 30 )
 "anims/Rock Head Charging Laser" = ExtResource( 22 )
 "anims/Rock Head Charging Laser Transition" = ExtResource( 21 )
 "anims/Rock Head Core Laser Transition" = ExtResource( 20 )
 "anims/Rock Head Idle 1" = ExtResource( 18 )
 "anims/Rock Head Idle 2" = ExtResource( 19 )
-"anims/Spider Boss Idle" = SubResource( 3 )
+"anims/Spider Boss Idle" = SubResource( 31 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Rock Head Boss"]
 
@@ -390,5 +490,26 @@ script = ExtResource( 2 )
 
 [node name="Shake Timer" type="Timer" parent="Camera2D"]
 one_shot = true
+
+[node name="Mode" type="TextEdit" parent="."]
+margin_left = 76.0
+margin_top = 63.0
+margin_right = 311.0
+margin_bottom = 133.0
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="TextEdit" parent="."]
+margin_left = 163.455
+margin_top = 8.38659
+margin_right = 274.455
+margin_bottom = 48.3866
+readonly = true
+wrap_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="Camera2D/Shake Timer" to="Camera2D" method="_on_Shake_Timer_timeout"]

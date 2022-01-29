@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player.gd"
+}, {
+"base": "Area2D",
+"class": "TrackingMissile",
+"language": "GDScript",
+"path": "res://Bosses/Spider Boss/Attacks/TrackingMissile.gd"
+} ]
+_global_script_class_icons={
+"Player": "",
+"TrackingMissile": ""
+}
+
 [application]
 
 config/name="The Lost Agates"
