@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Block Out.png" type="Texture" id=1]
 [ext_resource path="res://Camera2D.gd" type="Script" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Player.gd" type="Script" id=25]
 [ext_resource path="res://Player/Bullet/Bullet.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Bosses/Rock Head Boss/Animations/Laser/Charged Laser.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Bosses/Spider Boss/Animations/Simple Missle/Simple Missle.tscn" type="PackedScene" id=28]
 
 [sub_resource type="Environment" id=10]
 background_mode = 4
@@ -346,9 +347,9 @@ anims/RESET = SubResource( 12 )
 position = Vector2( 22, -1 )
 
 [node name="Spider Boss" type="Node2D" parent="."]
-visible = false
 
 [node name="Boss Sprite" type="Sprite" parent="Spider Boss"]
+modulate = Color( 1.2, 1.2, 1.2, 1 )
 position = Vector2( 296, 40 )
 texture = ExtResource( 14 )
 centered = false
@@ -361,7 +362,10 @@ autoplay = "Spider Boss Idle"
 
 [node name="AnimationTree" type="AnimationTree" parent="Spider Boss"]
 
+[node name="Simple Missle" parent="Spider Boss" instance=ExtResource( 28 )]
+
 [node name="Rock Head Boss" type="Node2D" parent="."]
+visible = false
 position = Vector2( -104, -72 )
 
 [node name="Top Sprite" type="Sprite" parent="Rock Head Boss"]
@@ -394,21 +398,21 @@ anims/RESET = SubResource( 2 )
 [node name="AnimationTree" type="AnimationTree" parent="Rock Head Boss"]
 
 [node name="Charged Laser" parent="Rock Head Boss" instance=ExtResource( 27 )]
-frame = 1
+frame = 2
 
 [node name="Charged Laser2" parent="Rock Head Boss" instance=ExtResource( 27 )]
 position = Vector2( 417, 208 )
-frame = 2
 
 [node name="Charged Laser3" parent="Rock Head Boss" instance=ExtResource( 27 )]
 position = Vector2( 382, 208 )
+frame = 0
 
 [node name="Charged Laser4" parent="Rock Head Boss" instance=ExtResource( 27 )]
 position = Vector2( 347, 208 )
+frame = 0
 
 [node name="Charged Laser5" parent="Rock Head Boss" instance=ExtResource( 27 )]
 position = Vector2( 314, 208 )
-frame = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
