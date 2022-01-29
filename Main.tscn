@@ -26,10 +26,10 @@
 [ext_resource path="res://Player/Animations/Player Idle.tres" type="Animation" id=24]
 [ext_resource path="res://Player.gd" type="Script" id=25]
 [ext_resource path="res://Player/Bullet/Bullet.tscn" type="PackedScene" id=26]
-[ext_resource path="res://Bosses/Rock Head Boss/Animations/Laser/Charged Laser.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Bosses/Spider Boss/Animations/Simple Missle/Simple Missle.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Bosses/Rock Head Boss/Core Laser Shoot.tres" type="Animation" id=29]
 [ext_resource path="res://Misc Sprites/Laser Light.png" type="Texture" id=30]
+[ext_resource path="res://Bosses/Spider Boss/Animations/Simple Missle/Beamed Laser.tscn" type="PackedScene" id=31]
 
 [sub_resource type="Environment" id=10]
 background_mode = 4
@@ -385,7 +385,6 @@ anims/RESET = SubResource( 12 )
 position = Vector2( 22, -1 )
 
 [node name="Spider Boss" type="Node2D" parent="."]
-visible = false
 
 [node name="Boss Sprite" type="Sprite" parent="Spider Boss"]
 modulate = Color( 1.2, 1.2, 1.2, 1 )
@@ -402,18 +401,22 @@ autoplay = "Spider Boss Idle"
 [node name="AnimationTree" type="AnimationTree" parent="Spider Boss"]
 
 [node name="Simple Missle" parent="Spider Boss" instance=ExtResource( 28 )]
-frame = 2
 
 [node name="Simple Missle2" parent="Spider Boss" instance=ExtResource( 28 )]
 position = Vector2( 294, 103 )
-frame = 2
 
 [node name="Simple Missle3" parent="Spider Boss" instance=ExtResource( 28 )]
 position = Vector2( 218, 122 )
-frame = 2
 
 [node name="Simple Missle4" parent="Spider Boss" instance=ExtResource( 28 )]
 position = Vector2( 218, 83 )
+
+[node name="Laser Ball" parent="Spider Boss" instance=ExtResource( 31 )]
+position = Vector2( 333, 71 )
+frame = 3
+
+[node name="Laser Ball 2" parent="Spider Boss" instance=ExtResource( 31 )]
+position = Vector2( 281, 55 )
 frame = 2
 
 [node name="Rock Head Boss" type="Node2D" parent="."]
@@ -448,24 +451,6 @@ anims/RESET = SubResource( 2 )
 "anims/Spider Boss Idle" = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="Rock Head Boss"]
-
-[node name="Charged Laser" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 480, 199 )
-frame = 1
-
-[node name="Charged Laser2" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 444, 199 )
-
-[node name="Charged Laser3" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 409, 199 )
-frame = 1
-
-[node name="Charged Laser4" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 374, 199 )
-frame = 1
-
-[node name="Charged Laser5" parent="Rock Head Boss" instance=ExtResource( 27 )]
-position = Vector2( 341, 199 )
 
 [node name="Light2D" type="Light2D" parent="Rock Head Boss"]
 position = Vector2( 517, 222 )
