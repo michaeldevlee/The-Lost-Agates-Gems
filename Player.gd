@@ -12,7 +12,6 @@ export (PackedScene) var Bullet
 onready var sprite = get_node("Player Sprite")
 onready var bullet_spawn_point = get_node("Bullet Spawn Point")
 
-
 func _ready():
 	register_signals()
 	initialize_variables()

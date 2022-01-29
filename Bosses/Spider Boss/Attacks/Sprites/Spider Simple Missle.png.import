@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spider Laser-Sheet.png-0053c6ce0f5dc59f112260211b50a0e0.stex"
+path="res://.import/Spider Simple Missle.png-47423a06e47c53a44eeb91d0caea8dff.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bosses/Spider Boss/Animations/Simple Missle/Spider Laser-Sheet.png"
-dest_files=[ "res://.import/Spider Laser-Sheet.png-0053c6ce0f5dc59f112260211b50a0e0.stex" ]
+source_file="res://Bosses/Spider Boss/Attacks/Sprites/Spider Simple Missle.png"
+dest_files=[ "res://.import/Spider Simple Missle.png-47423a06e47c53a44eeb91d0caea8dff.stex" ]
 
 [params]
 
@@ -28,7 +28,6 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
-process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false

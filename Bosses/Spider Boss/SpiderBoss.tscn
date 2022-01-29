@@ -1,0 +1,101 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Bosses/Spider Boss/SpiderBoss.gd" type="Script" id=1]
+[ext_resource path="res://Bosses/Spider Boss/Attacks/Sprites/Spider Boss-Sheet.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "colossus_beam"
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 7 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "increase_idle_count"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "pew_laser_eyes"
+
+[sub_resource type="Animation" id=4]
+resource_name = "shoot_tracking_missiles"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "pew_laser_eyes"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "shoot_tracking_missiles"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=12]
+states/idle/node = SubResource( 5 )
+states/idle/position = Vector2( 419, 93 )
+states/pew_laser_eyes/node = SubResource( 6 )
+states/pew_laser_eyes/position = Vector2( 685, 148 )
+states/shoot_tracking_missiles/node = SubResource( 7 )
+states/shoot_tracking_missiles/position = Vector2( 720, 44 )
+transitions = [ "idle", "shoot_tracking_missiles", SubResource( 8 ), "shoot_tracking_missiles", "idle", SubResource( 9 ), "idle", "pew_laser_eyes", SubResource( 10 ), "pew_laser_eyes", "idle", SubResource( 11 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=13]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+hframes = 8
+frame = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -46.6086, -86.5699, -45.8149, -40.9321, -23.9882, -39.7415, -26.7661, -36.5667, -23.9882, -25.8518, -27.9567, -25.8518, -35.8937, -30.614, -41.4496, -28.2329, -46.6086, -19.899, -45.4181, -12.7557, -56.9267, 7.48366, -61.6889, 10.2616, -67.6417, 21.7703, -68.4354, 39.2317, -69.6259, 47.9624, -70.0228, 76.1387, -62.4826, 91.2191, -61.6889, 80.1072, -64.4669, 70.186, -63.2763, 63.8364, -62.8795, 53.9151, -59.7047, 49.5498, -59.3078, 40.4222, -56.5299, 36.4537, -51.3708, 21.7703, -52.5614, 13.0396, -38.6716, -7.19981, -31.5283, -9.18405, -27.9567, -13.1526, -20.8134, -12.7557, -19.6228, -4.81871, -25.9724, 11.849, -31.5283, 15.4207, -33.1157, 32.4852, -26.7661, 43.597, -18.4323, 80.5041, -14.8606, 88.0443, -12.4795, 64.6301, -17.2417, 59.0742, -16.0511, 39.6285, -13.2732, 35.2632, -13.2732, 17.8018, -12.4795, 1.5309, -6.12991, 10.6584, 2.20395, 10.2616, 15.6969, 2.3246, 16.4906, 7.08681, 14.5063, 17.4049, 19.2685, 24.9451, 13.7126, 42.8033, 11.7284, 57.0899, 14.5063, 69.7891, 16.0937, 59.0742, 22.0465, 42.4065, 24.8244, 26.9293, 29.9835, 23.3577, 31.174, 7.48366, 27.2055, 2.3246, 24.4276, 2.3246, 16.8874, -8.39035, 16.8874, -10.3746, 14.1095, -13.5494, 33.1583, -15.5337, 39.5079, -11.962, 46.6512, -13.5494, 57.3661, 1.92775, 58.9536, 10.6584, 64.1126, 14.627, 64.1126, 45.5813, 66.4937, 59.471, 62.922, 88.4411, 66.0968, 87.2505, 70.4622, 74.5513, 70.859, 67.0112, 72.8433, 61.4553, 71.6527, 11.849, 72.8433, 7.88051, 73.637, -0.0565033, 66.8905, -6.00926, 62.5252, -5.61241, 51.0165, -20.2959, 48.6354, -27.4392, 42.2858, -31.4077, 34.7457, -29.4234, 32.7614, -26.6455, 19.6654, -23.8675, 18.078, -26.6455, 18.8717, -29.0266, 17.6811, -32.9951, 18.4748, -38.551, 24.8244, -38.9478, 35.9362, -49.6628, 36.3331, -83.7919, 28.3961, -90.5384, 2.99765, -89.3478, 5.37875, -80.6171, -2.95511, -82.2045, -9.30469, -80.6171, -10.8921, -78.236, -10.8921, -82.9982, -21.6071, -89.3478 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/colossus_beam = SubResource( 1 )
+anims/idle = SubResource( 2 )
+anims/pew_laser_eyes = SubResource( 3 )
+anims/shoot_tracking_missiles = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 12 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 13 )
