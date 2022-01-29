@@ -29,7 +29,6 @@ func _input(event):
 func _process(delta):
 	if shake_timer and !shake_timer.is_stopped():
 		shake_camera()
-		print(offset)
 
 func _on_Shake_Timer_timeout():
 	offset = Vector2(0,0)
