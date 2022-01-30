@@ -260,12 +260,11 @@ FallingLaser = ExtResource( 4 )
 
 [node name="Top Sprite" type="Sprite" parent="."]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( 412, 124.934 )
+position = Vector2( 412, 127 )
 texture = ExtResource( 6 )
 centered = false
 hframes = 12
 vframes = 4
-frame = 2
 
 [node name="Top Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 515.5, 165.5 )
@@ -273,12 +272,12 @@ shape = SubResource( 1 )
 
 [node name="Bottom Sprite" type="Sprite" parent="."]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( 412, 116.488 )
+position = Vector2( 412, 136 )
 texture = ExtResource( 7 )
 centered = false
 hframes = 12
 vframes = 4
-frame = 2
+frame = 36
 
 [node name="Bottom Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 515.5, 254.5 )

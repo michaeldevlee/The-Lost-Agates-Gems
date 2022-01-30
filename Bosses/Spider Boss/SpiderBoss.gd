@@ -142,5 +142,6 @@ func manipulate_boss_hp():
 		hp += 1
 
 func _physics_process(delta):
-	manipulate_boss_hp()
-	update_UI()
+	pass
+#	manipulate_boss_hp()
+#	update_UI()
