@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = rand_range(50, 200)
+var speed = rand_range(25, 75)
 var steer_force = 25.0
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -12,13 +12,14 @@ func _ready():
 	velocity = transform.x * speed
 
 func seek():
-	var distance_to_target = target.global_position - global_position
-	var desired_vel = distance_to_target.normalized() * speed
-	var steering_force = (desired_vel - velocity).normalized() * speed
+	var steering_force = Vector2.ZERO
+	if target:
+		var distance_to_target = target.global_position - global_position
+		var desired_vel = distance_to_target.normalized() * speed
+		steering_force = (desired_vel - velocity).normalized() * speed
 	return steering_force
 	
 func _physics_process(delta):
-
 	acceleration += seek()
 	velocity += acceleration * delta
 	velocity = velocity.clamped(speed)
@@ -26,7 +27,6 @@ func _physics_process(delta):
 	global_position += velocity * delta
 
 func explode():
-	EventBus.emit_signal("camera_event_initiated", "SHAKE")
 	set_physics_process(false)
 	queue_free()
 	

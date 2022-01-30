@@ -24,10 +24,6 @@ func _ready():
 	
 
 func move_from_input():
-	
-	if !can_move:
-		return
-	
 	velocity.x = 0
 	if(Input.is_action_pressed("player_left")):
 		velocity.x -= speed * dash_multiplier
@@ -48,7 +44,6 @@ func move_from_input():
 			is_dashing = false
 	if(Input.is_action_just_pressed("player_ducking")) and is_on_floor():
 		pass
-		
 	velocity = move_and_slide(velocity, Vector2.UP, true)
 
 

@@ -5,27 +5,27 @@
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://UI/Title Screen/Title Screen.gd" type="Script" id=4]
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=1]
 size = 15
 outline_size = 3
 outline_color = Color( 0.580392, 0.337255, 0.74902, 1 )
 use_mipmaps = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=2]
 size = 10
 outline_size = 1
 outline_color = Color( 0.633976, 0.442627, 0.765625, 1 )
 use_mipmaps = true
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=3]
 size = 25
 outline_size = 3
 outline_color = Color( 0.580392, 0.337255, 0.74902, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=4]
 resource_name = "Fade Out"
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer:modulate")
@@ -66,7 +66,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=5]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("MarginContainer:modulate")
@@ -153,8 +153,8 @@ margin_left = -16.5
 margin_top = -10.0
 margin_right = 16.5
 margin_bottom = 10.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 11 )
 text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -172,8 +172,8 @@ margin_left = 199.0
 margin_top = 5.0
 margin_right = 250.0
 margin_bottom = 25.0
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 11 )
 text = "Credits"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,7 +199,7 @@ margin_left = 118.0
 margin_top = 9.0
 margin_right = 331.0
 margin_bottom = 23.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 2 )
 text = "Fette Trump Deutsch à by Dieter Steffmann "
 __meta__ = {
 "_edit_use_anchors_": false
@@ -211,8 +211,8 @@ margin_left = 96.0
 margin_top = 80.0
 margin_right = 546.0
 margin_bottom = 112.0
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_fonts/font = SubResource( 13 )
 text = "The Lost Agates Gems"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -221,7 +221,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Fade Out" = SubResource( 14 )
-anims/RESET = SubResource( 15 )
+"anims/Fade Out" = SubResource( 4 )
+anims/RESET = SubResource( 5 )
 
 [connection signal="button_up" from="MarginContainer/VBoxContainer/HBoxContainer/Play Button" to="." method="_on_Play_Button_button_up"]

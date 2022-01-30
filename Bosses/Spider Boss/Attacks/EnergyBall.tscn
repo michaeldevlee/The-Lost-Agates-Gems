@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Bosses/Spider Boss/Animations/Simple Missle/Beamed Laser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Bosses/Spider Boss/Attacks/EnergyBall.gd" type="Script" id=2]
+
+[node name="EnergyBall" type="Area2D"]
+script = ExtResource( 2 )
+
+[node name="Laser Ball" parent="." instance=ExtResource( 1 )]
+frame = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -8.92399, -10.6441, -11.7019, -2.90551, -10.7098, 3.64252, -6.54288, 9.99213, 2.58467, 11.5795, 10.7201, 6.22205, 12.1091, -3.30236, 11.7122, -8.46141, 8.14058, -11.6362, 2.38625, -13.6205, -2.7728, -13.8189, -6.93974, -11.6362 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

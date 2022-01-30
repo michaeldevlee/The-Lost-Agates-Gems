@@ -4,7 +4,7 @@
 [ext_resource path="res://Foreground/Player Ground.png" type="Texture" id=2]
 [ext_resource path="res://Foreground/Boss Floor.png" type="Texture" id=3]
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
@@ -37,8 +37,8 @@ void vertex() {
     VERTEX.x += getWind(VERTEX.xy, UV, time);
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/speed = 2.0
 shader_param/minStrength = 0.05
 shader_param/maxStrength = 0.01
@@ -62,7 +62,7 @@ __meta__ = {
 }
 
 [node name="Foilage" type="Sprite" parent="."]
-material = SubResource( 7 )
+material = SubResource( 2 )
 texture = ExtResource( 1 )
 centered = false
 

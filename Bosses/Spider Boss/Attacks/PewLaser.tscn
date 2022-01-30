@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Bosses/Spider Boss/Attacks/Sprites/Spider Laser-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Bosses/Spider Boss/Attacks/PewLaser.gd" type="Script" id=2]
@@ -19,6 +19,14 @@ tracks/0/keys = {
 "values": [ 0, 2, 3, 4, 5, 6, 2, 3, 4, 5 ]
 }
 
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Area2D" type="Area2D"]
 script = ExtResource( 2 )
 
@@ -32,3 +40,7 @@ polygon = PoolVector2Array( -15.3182, -1.37227, -15.108, 0.835083, -10.7984, 5.7
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/pew_laser_reg = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "New Anim"

@@ -13,13 +13,13 @@
 [ext_resource path="res://Misc Sprites/Laser Light.png" type="Texture" id=11]
 [ext_resource path="res://Bosses/Rock Head Boss/Idle 2.tres" type="Animation" id=12]
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 47.5, 36.5 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 44.5, 36.5 )
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Top Sprite:frame")
@@ -154,7 +154,7 @@ tracks/10/keys = {
 "values": [ 0.3 ]
 }
 
-[sub_resource type="Animation" id=33]
+[sub_resource type="Animation" id=4]
 resource_name = "Rock Head Laser Hellfire"
 tracks/0/type = "method"
 tracks/0/path = NodePath(".")
@@ -171,11 +171,10 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id=5]
 resource_name = "Rock Head Laser Hellfire Transition"
 
-[sub_resource type="Animation" id=3]
-resource_name = "Spider Boss Idle"
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -191,34 +190,49 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=26]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Rock Head Charging Laser Transition Out"
 
-[sub_resource type="AnimationNodeAnimation" id=27]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Rock Head Charging Laser Transition"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Rock Head Charging Laser"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Rock Head Core Laser Shoot"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Rock Head Core Laser Transition"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Rock Head Idle 1"
 
-[sub_resource type="AnimationNodeAnimation" id=20]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Rock Head Idle 2"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Rock Head Laser Hellfire Transition"
 
-[sub_resource type="AnimationNodeAnimation" id=36]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Rock Head Laser Hellfire"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 switch_mode = 2
@@ -226,53 +240,40 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
-
-[sub_resource type="AnimationNodeStateMachine" id=15]
-"states/Rock Head Charging Laser/node" = SubResource( 28 )
+[sub_resource type="AnimationNodeStateMachine" id=26]
+"states/Rock Head Charging Laser/node" = SubResource( 9 )
 "states/Rock Head Charging Laser/position" = Vector2( -158.35, -96.9451 )
-"states/Rock Head Charging Laser Transition/node" = SubResource( 27 )
+"states/Rock Head Charging Laser Transition/node" = SubResource( 8 )
 "states/Rock Head Charging Laser Transition/position" = Vector2( -159.6, 44.0549 )
-"states/Rock Head Charging Laser Transition Out/node" = SubResource( 26 )
+"states/Rock Head Charging Laser Transition Out/node" = SubResource( 7 )
 "states/Rock Head Charging Laser Transition Out/position" = Vector2( 198.4, -105.232 )
-"states/Rock Head Core Laser Shoot/node" = SubResource( 18 )
+"states/Rock Head Core Laser Shoot/node" = SubResource( 10 )
 "states/Rock Head Core Laser Shoot/position" = Vector2( 310.125, 344.935 )
-"states/Rock Head Core Laser Transition/node" = SubResource( 19 )
+"states/Rock Head Core Laser Transition/node" = SubResource( 11 )
 "states/Rock Head Core Laser Transition/position" = Vector2( -33.6254, 345.685 )
-"states/Rock Head Idle 1/node" = SubResource( 17 )
+"states/Rock Head Idle 1/node" = SubResource( 12 )
 "states/Rock Head Idle 1/position" = Vector2( 193, 142.407 )
-"states/Rock Head Idle 2/node" = SubResource( 20 )
+"states/Rock Head Idle 2/node" = SubResource( 13 )
 "states/Rock Head Idle 2/position" = Vector2( 548.875, 142.461 )
-"states/Rock Head Laser Hellfire/node" = SubResource( 36 )
+"states/Rock Head Laser Hellfire/node" = SubResource( 15 )
 "states/Rock Head Laser Hellfire/position" = Vector2( 569.149, 11.8477 )
-"states/Rock Head Laser Hellfire Transition/node" = SubResource( 35 )
+"states/Rock Head Laser Hellfire Transition/node" = SubResource( 14 )
 "states/Rock Head Laser Hellfire Transition/position" = Vector2( 568.149, -105.455 )
-transitions = [ "Rock Head Idle 1", "Rock Head Core Laser Transition", SubResource( 21 ), "Rock Head Core Laser Transition", "Rock Head Core Laser Shoot", SubResource( 22 ), "Rock Head Core Laser Shoot", "Rock Head Idle 1", SubResource( 23 ), "Rock Head Idle 1", "Rock Head Charging Laser Transition", SubResource( 29 ), "Rock Head Charging Laser Transition", "Rock Head Charging Laser", SubResource( 30 ), "Rock Head Charging Laser", "Rock Head Charging Laser Transition Out", SubResource( 31 ), "Rock Head Charging Laser Transition Out", "Rock Head Idle 1", SubResource( 32 ), "Rock Head Idle 1", "Rock Head Laser Hellfire Transition", SubResource( 37 ), "Rock Head Laser Hellfire Transition", "Rock Head Laser Hellfire", SubResource( 38 ), "Rock Head Laser Hellfire", "Rock Head Idle 1", SubResource( 39 ) ]
+transitions = [ "Rock Head Idle 1", "Rock Head Core Laser Transition", SubResource( 16 ), "Rock Head Core Laser Transition", "Rock Head Core Laser Shoot", SubResource( 17 ), "Rock Head Core Laser Shoot", "Rock Head Idle 1", SubResource( 18 ), "Rock Head Idle 1", "Rock Head Charging Laser Transition", SubResource( 19 ), "Rock Head Charging Laser Transition", "Rock Head Charging Laser", SubResource( 20 ), "Rock Head Charging Laser", "Rock Head Charging Laser Transition Out", SubResource( 21 ), "Rock Head Charging Laser Transition Out", "Rock Head Idle 1", SubResource( 22 ), "Rock Head Idle 1", "Rock Head Laser Hellfire Transition", SubResource( 23 ), "Rock Head Laser Hellfire Transition", "Rock Head Laser Hellfire", SubResource( 24 ), "Rock Head Laser Hellfire", "Rock Head Idle 1", SubResource( 25 ) ]
 start_node = "Rock Head Idle 1"
 graph_offset = Vector2( -204.649, -245.035 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
-[node name="Rock Head Boss" type="StaticBody2D" groups=["boss"]]
+[node name="Rock Head Boss" type="StaticBody2D" groups=[
+"boss",
+]]
 position = Vector2( -104, -72 )
 script = ExtResource( 10 )
 ChargedLaser = ExtResource( 3 )
@@ -280,32 +281,30 @@ FallingLaser = ExtResource( 4 )
 
 [node name="Top Sprite" type="Sprite" parent="."]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( 412, 124.054 )
+position = Vector2( 412, 126.938 )
 texture = ExtResource( 6 )
 centered = false
 hframes = 12
 vframes = 4
-frame = 4
 
 [node name="Top Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 515.5, 165.5 )
-shape = SubResource( 13 )
+shape = SubResource( 1 )
 
 [node name="Bottom Sprite" type="Sprite" parent="."]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( 412, 115.946 )
+position = Vector2( 412, 113.198 )
 texture = ExtResource( 7 )
 centered = false
 hframes = 12
 vframes = 4
-frame = 4
 
 [node name="Bottom Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 515.5, 254.5 )
-shape = SubResource( 14 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 2 )
+anims/RESET = SubResource( 3 )
 "anims/Rock Head Charging Laser" = ExtResource( 8 )
 "anims/Rock Head Charging Laser Transition" = ExtResource( 2 )
 "anims/Rock Head Charging Laser Transition Out" = ExtResource( 1 )
@@ -313,15 +312,15 @@ anims/RESET = SubResource( 2 )
 "anims/Rock Head Core Laser Transition" = ExtResource( 1 )
 "anims/Rock Head Idle 1" = ExtResource( 9 )
 "anims/Rock Head Idle 2" = ExtResource( 12 )
-"anims/Rock Head Laser Hellfire" = SubResource( 33 )
-"anims/Rock Head Laser Hellfire Transition" = SubResource( 34 )
-"anims/Spider Boss Idle" = SubResource( 3 )
+"anims/Rock Head Laser Hellfire" = SubResource( 4 )
+"anims/Rock Head Laser Hellfire Transition" = SubResource( 5 )
+"anims/Spider Boss Idle" = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 15 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 16 )
+parameters/playback = SubResource( 27 )
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 517, 222 )
