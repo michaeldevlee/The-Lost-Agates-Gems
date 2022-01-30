@@ -20,12 +20,21 @@ environment = SubResource( 10 )
 
 [node name="Background" parent="." instance=ExtResource( 2 )]
 
+[node name="Background2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -480, 1 )
+scale = Vector2( -1, 1 )
+
 [node name="Foreground" parent="." instance=ExtResource( 6 )]
+
+[node name="Foreground2" parent="." instance=ExtResource( 6 )]
+position = Vector2( -480, 0 )
+scale = Vector2( -1, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 [node name="Spider Boss" parent="." instance=ExtResource( 7 )]
-visible = false
+position = Vector2( -496, 1 )
+scale = Vector2( -1, 1 )
 
 [node name="Rock Head Boss" parent="." instance=ExtResource( 4 )]
 

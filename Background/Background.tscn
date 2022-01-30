@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Distant Trees 2.png" type="Texture" id=1]
 [ext_resource path="res://Background/Sprites/Background Capsule.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Background/Sprites/Background Back Trees..png" type="Texture" id=10]
 [ext_resource path="res://Background/Sprites/Background Distant Clouds..png" type="Texture" id=11]
 [ext_resource path="res://Foreground/Platform.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/Title Screen/Title Screen Sky.png" type="Texture" id=13]
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -121,8 +122,7 @@ __meta__ = {
 [node name="Sky2" type="TextureRect" parent="Boss Area"]
 margin_left = -480.0
 margin_top = -270.0
-margin_right = 480.0
-texture = ExtResource( 6 )
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 2
 __meta__ = {
@@ -215,10 +215,9 @@ centered = false
 texture = ExtResource( 4 )
 centered = false
 
-[node name="Platform" type="Node2D" parent="Boss Area" instance=ExtResource( 12 )]
-position = Vector2( 15, 146 )
+[node name="Platform" parent="Boss Area" instance=ExtResource( 12 )]
 
-[node name="Platform2" type="Node2D" parent="Boss Area" instance=ExtResource( 12 )]
+[node name="Platform2" parent="Boss Area" instance=ExtResource( 12 )]
 position = Vector2( 154, 146 )
 
 [node name="Tutorial Area" type="Node2D" parent="."]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Spider Boss-Sheet.png-517f2a1c0ff6348aae24db34fb6dcf7d.stex"
+path="res://.import/Title Screen Sky.png-a6d0c9d31ff860aa3dc4f53744657763.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Bosses/Spider Boss/Attacks/Sprites/Spider Boss-Sheet.png"
-dest_files=[ "res://.import/Spider Boss-Sheet.png-517f2a1c0ff6348aae24db34fb6dcf7d.stex" ]
+source_file="res://UI/Title Screen/Title Screen Sky.png"
+dest_files=[ "res://.import/Title Screen Sky.png-a6d0c9d31ff860aa3dc4f53744657763.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=false
