@@ -29,7 +29,7 @@ var state_machine
 var _idle_count = 0
 var _attack_count = 0
 
-var hp = 1000
+var hp = 5000
 
 export (PackedScene) var CoreLaser
 export (PackedScene) var ChargedLaser

@@ -10,11 +10,9 @@ func _ready():
 func initialize_player_stats():
 	if player_path:
 		player = get_node(player_path)
-		print(player)
-#		if player is Player:
-#			max_value = player.hp
-#			value = max_value
-#			print(max_value)
+		max_value = player.hp
+		value = max_value
+		print(max_value)
 	
 func update_health(dmg):
 	value -= dmg

@@ -27,9 +27,7 @@ __meta__ = {
 [node name="Foreground" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0, -0.561234 )
 
-[node name="SpiderBoss" parent="." groups=[
-"boss",
-] instance=ExtResource( 3 )]
+[node name="SpiderBoss" parent="." groups=["boss"] instance=ExtResource( 3 )]
 position = Vector2( 75.5148, 173.03 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]

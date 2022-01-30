@@ -130,9 +130,9 @@ func take_damage(amount):
 	var old_hp = hp
 	hp -= amount
 	
-func update_UI():
-	get_node("../HP").text = 'HP: ' + str(hp)
-	get_node("../Mode").text = "BOSS STAGE: " + str(animation)
+#func update_UI():
+#	get_node("../HP").text = 'HP: ' + str(hp)
+#	get_node("../Mode").text = "BOSS STAGE: " + str(animation)
 
 # disable after testing
 func manipulate_boss_hp():
@@ -140,7 +140,7 @@ func manipulate_boss_hp():
 		hp -= 1
 	elif Input.is_action_pressed('ui_up'):
 		hp += 1
-
-func _physics_process(delta):
-	manipulate_boss_hp()
-	update_UI()
+#
+#func _physics_process(delta):
+#	manipulate_boss_hp()
+#	update_UI()

@@ -100,7 +100,7 @@ tracks/7/keys = {
 "update": 0,
 "values": [ 1.5, 1.3 ]
 }
-tracks/8/type = "method"
+tracks/8/type = "value"
 tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
@@ -109,22 +109,22 @@ tracks/8/enabled = true
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
+"update": 0,
 "values": [ {
 "args": [  ],
 "method": "shoot_charging_laser"
 } ]
 }
-tracks/9/type = "value"
+tracks/9/type = "method"
 tracks/9/path = NodePath("Light2D:enabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"values": [  ]
 }
 tracks/10/type = "value"
 tracks/10/path = NodePath("Light2D:position")

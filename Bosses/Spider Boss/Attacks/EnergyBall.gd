@@ -13,7 +13,7 @@ func _ready():
 
 func seek():
 	var steering_force = Vector2.ZERO
-	if target:
+	if is_instance_valid(target):
 		var distance_to_target = target.global_position - global_position
 		var desired_vel = distance_to_target.normalized() * speed
 		steering_force = (desired_vel - velocity).normalized() * speed

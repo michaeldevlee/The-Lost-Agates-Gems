@@ -7,7 +7,7 @@ export var jump_impulse = 600
 var dash_multiplier = 1
 var velocity : Vector2 = Vector2()
 
-var hp = 1000
+var hp = 100
 export (PackedScene) var Bullet
 
 onready var sprite = get_node("Player Sprite")
@@ -74,6 +74,9 @@ func shoot_projectile_from_input():
 				bullet.player_direction = player_facing_direction
 
 func take_damage(amount):
+	if hp <= 0:
+		queue_free()
+		EventBus.emit_signal("menu_item_initiated", "Death Screen")
 	hp -= amount
 	
 func initialize_player():

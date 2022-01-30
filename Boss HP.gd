@@ -1,17 +1,20 @@
 extends TextureProgress
 
-export (NodePath) var boss_path
-var boss
+var rock_head = preload("res://Bosses/Rock Head Boss/Rock Head Boss.tscn")
+var spider = preload("res://Bosses/Spider Boss/SpiderBoss.tscn")
 
 func _ready():
 	EventBus.connect("boss_hit", self, "update_health")
-	initialize_boss_stats()
+	EventBus.connect("boss_picked", self, "initialize_boss_stats")
 
-func initialize_boss_stats():
-	if boss_path:
-		boss = get_node(boss_path)
-		max_value = boss.hp
-		value = max_value
+func initialize_boss_stats(boss_name):
+	match boss_name:
+		"Rock Head":
+			max_value = 5000
+			value = max_value
+		"Spider":
+			max_value = 15000 
+			value = max_value
 	
 func update_health(dmg):
 	value -= dmg
