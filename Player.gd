@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 export (int) var speed = 300
 export (int) var gravity = 900
@@ -6,7 +7,7 @@ export var jump_impulse = 600
 var dash_multiplier = 1
 var velocity : Vector2 = Vector2()
 
-var hp = 100
+var hp = 5000
 export (PackedScene) var Bullet
 
 onready var sprite = get_node("Player Sprite")
@@ -72,6 +73,7 @@ func shoot_projectile_from_input():
 
 func take_damage(amount):
 	hp -= amount
+	
 
 func register_signals():
 	EventBus.connect("player_hit", self, "take_damage")
@@ -79,7 +81,7 @@ func register_signals():
 #debugging purposes
 func _input(event):
 	if Input.is_action_just_pressed("ui_down"):
-		EventBus.emit_signal("player_hit", 2)
+		EventBus.emit_signal("boss_hit", 10)
 
 func _physics_process(delta):
 	move_from_input()
