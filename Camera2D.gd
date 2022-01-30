@@ -27,7 +27,7 @@ func register_signals():
 #debugging purposes
 func _input(event):
 	if Input.is_action_just_pressed("ui_down"):
-		EventBus.emit_signal("camera_event_initiated", "SHAKE")
+		EventBus.emit_signal("screen_animation_initiated", "BOSS_DEATH")
 
 func start_tutorial_camera():
 	tween.interpolate_property(self, "position", position, position + Vector2(0, 270), 3,Tween.TRANS_QUAD,Tween.EASE_IN_OUT)
