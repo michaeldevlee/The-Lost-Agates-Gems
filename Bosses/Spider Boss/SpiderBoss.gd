@@ -1,12 +1,10 @@
 extends StaticBody2D
 
 const ATTACK_THRESHOLD = 5
-const PANIC_THRESHOLD = 6
 const IDLE = 'idle'
 const PEW_LASER = 'pew_laser_eyes'
 const ENERGY_BALL = 'energy_ball'
 const TRACKING_MISSILES = 'shoot_tracking_missiles'
-const PANIC = 'panic_frenzy'
 
 const TrackingMissile = preload('res://Bosses/Spider Boss/Attacks/TrackingMissile.tscn')
 const PewLaser = preload('res://Bosses/Spider Boss/Attacks/PewLaser.tscn')
@@ -43,20 +41,14 @@ func find_target():
 func increase_idle_count():
 	_idle_count += _idle_rate
 	var should_attack = _idle_count > ATTACK_THRESHOLD
-	var can_use_ultimate = _idle_count > PANIC_THRESHOLD
 
 	var rng = int(rand_range(0, 100))
 	
-	if hp < 20 and can_use_ultimate:
+	if hp < 10 and should_attack:
 		_idle_count = 0
 		_idle_rate = rand_range(2, 3)
-		animation = PANIC
-		panic_frenzy()
-		
-	elif hp < 40 and should_attack:
-		_idle_count = 0
-		_idle_rate = 2
 		animation = PEW_LASER
+		pew_laser_eyes()
 		yield(get_tree().create_timer(0.5),"timeout")
 		if rng & 1:
 			animation = ENERGY_BALL
@@ -64,7 +56,7 @@ func increase_idle_count():
 		else:
 			animation = TRACKING_MISSILES
 			shoot_tracking_missiles()
-	elif hp < 60 and _idle_count > ATTACK_THRESHOLD:
+	elif hp < 40 and _idle_count > ATTACK_THRESHOLD:
 		_idle_count = 0
 		_idle_rate = rand_range(1, 2)
 		if rng > 66:
@@ -76,14 +68,14 @@ func increase_idle_count():
 		else:
 			animation = PEW_LASER
 			pew_laser_eyes()
-	elif hp < 80 and _idle_count > ATTACK_THRESHOLD:
+	elif hp < 75 and _idle_count > ATTACK_THRESHOLD:
 		_idle_count = 0
-		if rng > 40:
-			animation = TRACKING_MISSILES
-			shoot_tracking_missiles()
-		elif rng > 20:
+		if rng > 60:
 			animation = ENERGY_BALL
 			shoot_energy_ball()
+		elif rng > 30:
+			animation = TRACKING_MISSILES
+			shoot_tracking_missiles()
 		else:
 			animation = PEW_LASER
 			pew_laser_eyes()
@@ -108,7 +100,7 @@ func pew_laser_eyes():
 func shoot_tracking_missiles():
 	state_machine.travel(TRACKING_MISSILES)
 	find_target()
-	for n in 8:
+	for n in 4:
 		var randomTimer = rand_range(0.1, 0.3)
 		var trackingMissile = TrackingMissile.instance()
 		if n & 1:
@@ -134,16 +126,6 @@ func shoot_energy_ball():
 		yield(get_tree().create_timer(1), 'timeout')
 		increment_location += 100
 
-func panic_frenzy():
-	state_machine.travel(PANIC)
-	find_target()
-	animation = TRACKING_MISSILES
-	shoot_tracking_missiles()
-	animation = PEW_LASER
-	pew_laser_eyes()
-	animation = ENERGY_BALL
-	shoot_energy_ball()
-
 func take_damage(amount):
 	var old_hp = hp
 	hp -= amount
@@ -152,6 +134,7 @@ func update_UI():
 	get_node("../HP").text = 'HP: ' + str(hp)
 	get_node("../Mode").text = "BOSS STAGE: " + str(animation)
 
+# disable after testing
 func manipulate_boss_hp():
 	if Input.is_action_pressed('ui_down'):
 		hp -= 1
