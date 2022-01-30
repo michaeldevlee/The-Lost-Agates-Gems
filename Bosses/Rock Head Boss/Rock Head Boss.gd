@@ -45,18 +45,16 @@ func increase_idle_count():
 	_idle_count += 1
 	transition_to_idle()
 	var should_attack = _idle_count > ATTACK_THRESHOLD
-	if should_attack:
-		transition_to_shoot_core_laser()
 
-#	if hp < 40 and should_attack:
-#		_idle_count = 0
-#		transition_to_activate_laser_hellfire()
-#	elif hp < 80 and should_attack:
-#		_idle_count = 0
-#		transition_to_shoot_charging_laser()
-#	elif should_attack:
-#		_idle_count = 0
-#		transition_to_shoot_core_laser()
+	if hp < 40 and should_attack:
+		_idle_count = 0
+		transition_to_activate_laser_hellfire()
+	elif hp < 80 and should_attack:
+		_idle_count = 0
+		transition_to_shoot_charging_laser()
+	elif should_attack:
+		_idle_count = 0
+		transition_to_shoot_core_laser()
 
 
 func transition_to_shoot_core_laser():
@@ -83,7 +81,7 @@ func shoot_charging_laser():
 		laser.global_transform = charged_laser_spawn_point.global_transform
 		laser.target = get_node("../Player")
 		owner.add_child(laser)
-		yield(get_tree().create_timer(0.3),"timeout")
+		yield(get_tree().create_timer(0.8),"timeout")
 	transition_out_shoot_charging_laser()
 
 func transition_to_activate_laser_hellfire():
@@ -91,12 +89,12 @@ func transition_to_activate_laser_hellfire():
 
 func activate_laser_hellfire():
 	var viewport = get_viewport().get_visible_rect().size
-	for n in 20:
+	for n in 100:
 		EventBus.emit_signal("camera_event_initiated", "SHAKE")
 		var laser = FallingLaser.instance()
 		owner.add_child(laser)
 		laser.position = Vector2(rand_range(0, viewport.x), 0)
-		yield(get_tree().create_timer(0.1),"timeout")
+		yield(get_tree().create_timer(0.3),"timeout")
 	transition_to_idle()
 
 func take_damage(amount):

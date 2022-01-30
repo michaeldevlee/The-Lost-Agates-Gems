@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/Boss HP Fill.png" type="Texture" id=1]
+[ext_resource path="res://UI/Player HP BG.png" type="Texture" id=2]
+[ext_resource path="res://UI/Player HP Fill.png" type="Texture" id=3]
+[ext_resource path="res://UI/Boss HP BG.png" type="Texture" id=4]
+[ext_resource path="res://Boss HP.gd" type="Script" id=5]
+[ext_resource path="res://Player HP.gd" type="Script" id=6]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player HP" type="TextureProgress" parent="UI"]
+margin_left = 12.0
+margin_top = 16.0
+margin_right = 150.0
+margin_bottom = 56.0
+max_value = 1000.0
+value = 1000.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+player_path = NodePath("../../../Player")
+
+[node name="Boss HP" type="TextureProgress" parent="UI"]
+margin_left = 321.0
+margin_top = 16.0
+margin_right = 459.0
+margin_bottom = 56.0
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
