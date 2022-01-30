@@ -17,12 +17,17 @@ onready var anim_player = get_node("AnimationPlayer")
 
 var is_dashing : bool = false
 var player_facing_direction = "Right"
+var can_move : bool = false
 
 func _ready():
 	register_signals()
 	
 
 func move_from_input():
+	
+	if !can_move:
+		return
+	
 	velocity.x = 0
 	if(Input.is_action_pressed("player_left")):
 		velocity.x -= speed * dash_multiplier
@@ -37,8 +42,8 @@ func move_from_input():
 	if(Input.is_action_just_pressed("player_dash")):
 		if !is_dashing and abs(velocity.x) > 0:
 			is_dashing = true
-			dash_multiplier = 3
-			yield(get_tree().create_timer(0.4),"timeout")
+			dash_multiplier = 2
+			yield(get_tree().create_timer(0.3),"timeout")
 			dash_multiplier = 1
 			is_dashing = false
 	if(Input.is_action_just_pressed("player_ducking")) and is_on_floor():
@@ -72,9 +77,12 @@ func shoot_projectile_from_input():
 func take_damage(amount):
 	hp -= amount
 	
+func initialize_player():
+	can_move = true
 
 func register_signals():
 	EventBus.connect("player_hit", self, "take_damage")
+	EventBus.connect("tutorial_area_started", self, "initialize_player")
 
 #debugging purposes
 func _input(event):
