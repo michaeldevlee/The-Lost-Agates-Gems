@@ -140,77 +140,76 @@ position = Vector2( 296, 40 )
 [node name="Missle Fire Smoke" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 52, 15 )
 frames = SubResource( 23 )
-frame = 5
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke2" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 54, 37 )
 frames = SubResource( 23 )
-frame = 3
+frame = 5
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke3" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 97, 12 )
 frames = SubResource( 23 )
-frame = 3
+frame = 5
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke4" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 105, 20 )
 frames = SubResource( 23 )
-frame = 2
+frame = 4
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke5" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 97, 28 )
 frames = SubResource( 23 )
-frame = 2
+frame = 4
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke6" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 105, 32 )
 frames = SubResource( 23 )
-frame = 1
+frame = 3
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke7" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 95, 39 )
 frames = SubResource( 23 )
-frame = 1
+frame = 3
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke8" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 108, 42 )
 frames = SubResource( 23 )
-frame = 1
+frame = 3
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke9" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 59, 26 )
 frames = SubResource( 23 )
-frame = 6
+frame = 1
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke10" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 47, 31 )
 frames = SubResource( 23 )
-frame = 6
+frame = 1
 playing = true
 centered = false
 
 [node name="Missle Fire Smoke11" type="AnimatedSprite" parent="Missile Fire Smoke"]
 position = Vector2( 62, 11 )
 frames = SubResource( 23 )
-frame = 6
+frame = 1
 playing = true
 centered = false
 
