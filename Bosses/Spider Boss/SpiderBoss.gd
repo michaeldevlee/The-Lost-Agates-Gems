@@ -140,7 +140,8 @@ func manipulate_boss_hp():
 		hp -= 1
 	elif Input.is_action_pressed('ui_up'):
 		hp += 1
-#
-#func _physics_process(delta):
+
+func _physics_process(delta):
+	pass
 #	manipulate_boss_hp()
 #	update_UI()

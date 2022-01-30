@@ -29,7 +29,7 @@ var state_machine
 var _idle_count = 0
 var _attack_count = 0
 
-var hp = 5000
+var hp = 4000
 
 export (PackedScene) var CoreLaser
 export (PackedScene) var ChargedLaser
@@ -44,6 +44,7 @@ func register_signals():
 	
 func activate_boss(boss_name):
 	if boss_name == "Rock Head":
+		EventBus.emit_signal("boss_init", hp)
 		_anim_tree.set_active(true)
 		transition_to_idle()
 	
@@ -125,7 +126,14 @@ func show_hitmarker():
 	yield(get_tree().create_timer(0.1),"timeout")
 	top_sprite.set_modulate(top_sprite_color)
 	bot_sprite.set_modulate(bot_sprite_color)
+	
+func _physics_process(delta):
+	if(hp <= 0):
+		if _anim_tree.active:
+			EventBus.emit_signal("screen_animation_initiated", "BOSS_DEATH")
+			_anim_tree.set_active(false)
+		show_hitmarker()
 
 func take_damage(amount):
 	show_hitmarker()
-	hp -= amount
+	hp -= 1
