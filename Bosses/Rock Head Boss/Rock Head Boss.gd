@@ -43,8 +43,9 @@ func register_signals():
 	EventBus.connect("boss_started", self, "activate_boss")
 	
 func activate_boss(boss_name):
-	_anim_tree.set_active(true)
-	transition_to_idle()
+	if boss_name == "Rock Head":
+		_anim_tree.set_active(true)
+		transition_to_idle()
 	
 func _ready():
 	register_signals()
