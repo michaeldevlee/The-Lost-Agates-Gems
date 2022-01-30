@@ -7,9 +7,11 @@
 script = ExtResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -3.8147e-06, 1.43051e-06 )
+scale = Vector2( 1.20329, 0.805546 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 autostart = true
 
 [node name="Sprite" type="Sprite" parent="."]

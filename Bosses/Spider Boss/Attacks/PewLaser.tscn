@@ -27,7 +27,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Area2D" type="Area2D"]
+[node name="PewLaser" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -43,4 +43,10 @@ anims/pew_laser_reg = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-animation = "New Anim"
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.249999, -0.25 )
+scale = Vector2( 1.35, 0.6 )
+
+[connection signal="body_entered" from="." to="." method="_on_PewLaser_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

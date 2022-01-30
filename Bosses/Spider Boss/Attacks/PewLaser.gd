@@ -15,13 +15,12 @@ func _physics_process(delta):
 	move = move.normalized() * speed
 	position += move
 
-func _on_Charged_Laser_body_entered(body):
-	if(body.is_in_group("player")):
-		EventBus.emit_signal("player_hit", 10)
-		queue_free()
-
 func _on_VisibilityNotifier2D_screen_exited():
-	print("exited screen")
+	set_physics_process(false)
 	queue_free()
 
-
+func _on_PewLaser_body_entered(body):
+	if body.get_name() == 'Player':
+		print('Player hit with laser')
+		EventBus.emit_signal("player_hit", 5)
+		queue_free()

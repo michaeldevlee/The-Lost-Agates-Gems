@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = rand_range(25, 75)
+var speed = rand_range(5, 75)
 var steer_force = 25.0
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
@@ -36,10 +36,12 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Timer_timeout():
 	explode()
 	
-func _on_TrackingMissile_body_entered(body):
+func _on_EnergyBall_body_entered(body):
 	if body.get_name() == 'Player':
+		print('Hit with EnergyBall')
+		EventBus.emit_signal('player_hit', 20)
 		explode()
-	elif body.get_name() == 'TrackingMissile':
+	elif body.get_name() == 'EnergyBall':
+		print('exploded with self')
 		explode()
 	
-

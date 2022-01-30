@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const ATTACK_THRESHOLD = 3
+const ATTACK_THRESHOLD = 5
 const PANIC_THRESHOLD = 6
 const IDLE = 'idle'
 const PEW_LASER = 'pew_laser_eyes'
@@ -38,7 +38,6 @@ func _ready():
 	state_machine.travel(IDLE)
 	
 func find_target():
-	print('finding target')
 	target = get_parent().get_node("Player")
 
 func increase_idle_count():
@@ -46,7 +45,7 @@ func increase_idle_count():
 	var should_attack = _idle_count > ATTACK_THRESHOLD
 	var can_use_ultimate = _idle_count > PANIC_THRESHOLD
 
-	var rng = rand_range(0, 100)
+	var rng = int(rand_range(0, 100))
 	
 	if hp < 20 and can_use_ultimate:
 		_idle_count = 0
@@ -110,12 +109,14 @@ func shoot_tracking_missiles():
 	state_machine.travel(TRACKING_MISSILES)
 	find_target()
 	for n in 8:
-		var randomTimer = rand_range(0.1, 0.4)
+		var randomTimer = rand_range(0.1, 0.3)
 		var trackingMissile = TrackingMissile.instance()
 		if n & 1:
 			trackingMissile.global_transform = left_corner_rocket_spawn_point.global_transform
+			trackingMissile.global_position.y += n * 4
 		else:
 			trackingMissile.global_transform = right_corner_rocket_spawn_point.global_transform
+			trackingMissile.global_position.y += n * 4
 		trackingMissile.target = target
 		owner.add_child(trackingMissile)
 		yield(get_tree().create_timer(randomTimer), 'timeout')
@@ -143,16 +144,20 @@ func panic_frenzy():
 	animation = ENERGY_BALL
 	shoot_energy_ball()
 
-func take_damage():
-	if Input.is_action_pressed('ui_down'):
-		hp -= 1
-	if Input.is_action_pressed('ui_up'):
-		hp += 1
-
+func take_damage(amount):
+	var old_hp = hp
+	hp -= amount
+	
 func update_UI():
 	get_node("../HP").text = 'HP: ' + str(hp)
 	get_node("../Mode").text = "BOSS STAGE: " + str(animation)
 
+func manipulate_boss_hp():
+	if Input.is_action_pressed('ui_down'):
+		hp -= 1
+	elif Input.is_action_pressed('ui_up'):
+		hp += 1
+
 func _physics_process(delta):
-	take_damage()
+	manipulate_boss_hp()
 	update_UI()

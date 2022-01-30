@@ -1,7 +1,7 @@
 extends Area2D
 
-var speed = rand_range(50, 200)
-var steer_force = 25.0
+var speed = rand_range(100, 250)
+var steer_force = 75.0
 var velocity = Vector2.ZERO
 var acceleration = Vector2.ZERO
 
@@ -38,6 +38,8 @@ func _on_Timer_timeout():
 	
 func _on_TrackingMissile_body_entered(body):
 	if body.get_name() == 'Player':
+		EventBus.emit_signal('player_hit', 10)
+		print('missile hit player')
 		explode()
 	elif body.get_name() == 'TrackingMissile':
 		explode()
