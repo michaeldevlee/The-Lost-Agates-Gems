@@ -7,7 +7,7 @@ export var jump_impulse = 600
 var dash_multiplier = 1
 var velocity : Vector2 = Vector2()
 
-var hp = 5000
+var hp = 1000
 export (PackedScene) var Bullet
 
 onready var sprite = get_node("Player Sprite")
@@ -24,6 +24,10 @@ func _ready():
 	
 
 func move_from_input():
+	
+	if !can_move:
+		return
+	
 	velocity.x = 0
 	if(Input.is_action_pressed("player_left")):
 		velocity.x -= speed * dash_multiplier
@@ -78,11 +82,6 @@ func initialize_player():
 func register_signals():
 	EventBus.connect("player_hit", self, "take_damage")
 	EventBus.connect("tutorial_area_started", self, "initialize_player")
-
-#debugging purposes
-func _input(event):
-	if Input.is_action_just_pressed("ui_down"):
-		EventBus.emit_signal("boss_hit", 10)
 
 func _physics_process(delta):
 	move_from_input()
