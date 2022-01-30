@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Background/Sprites/Background Foilage.png" type="Texture" id=1]
 [ext_resource path="res://Foreground/Player Ground.png" type="Texture" id=2]
+[ext_resource path="res://Foreground/Boss Floor.png" type="Texture" id=3]
 
 [sub_resource type="Shader" id=6]
 code = "shader_type canvas_item;
@@ -68,4 +69,8 @@ centered = false
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 1, 231, 83, 231, 117, 236, 181, 236, 335, 227, 481, 226, 479, 281, 2, 275, -2, 232 )
+polygon = PoolVector2Array( 0, 230, 83, 231, 117, 236, 181, 236, 335, 227, 480, 224, 480, 281, 0, 275 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false

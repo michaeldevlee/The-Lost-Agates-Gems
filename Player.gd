@@ -27,11 +27,9 @@ func move_from_input():
 	if(Input.is_action_pressed("player_left")):
 		velocity.x -= speed * dash_multiplier
 		anim_player.play("Player Walk")
-		print(player_facing_direction)
 	elif(Input.is_action_pressed("player_right")):
 		velocity.x += speed * dash_multiplier
 		anim_player.play("Player Walk")
-		print(player_facing_direction)
 	else:
 		anim_player.play("Player Idle")
 	if(Input.is_action_just_pressed("player_jump")) and is_on_floor():

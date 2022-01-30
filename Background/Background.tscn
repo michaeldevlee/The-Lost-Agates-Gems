@@ -109,7 +109,6 @@ shader_param/offset = 0.0
 [node name="Boss Area" type="Node2D" parent="."]
 
 [node name="Sky" type="TextureRect" parent="Boss Area"]
-margin_left = -480.0
 margin_right = 480.0
 margin_bottom = 270.0
 texture = ExtResource( 6 )
@@ -130,7 +129,6 @@ __meta__ = {
 }
 
 [node name="Clouds" type="TextureRect" parent="Boss Area"]
-margin_left = -480.0
 margin_right = 480.0
 margin_bottom = 270.0
 texture = ExtResource( 11 )
@@ -141,7 +139,6 @@ __meta__ = {
 }
 
 [node name="Distant Forest" type="TextureRect" parent="Boss Area"]
-margin_left = -480.0
 margin_right = 480.0
 margin_bottom = 270.0
 texture = ExtResource( 1 )
@@ -153,7 +150,6 @@ __meta__ = {
 
 [node name="Distant Forest 2" type="TextureRect" parent="Boss Area"]
 material = SubResource( 9 )
-margin_left = -480.0
 margin_right = 480.0
 margin_bottom = 270.0
 texture = ExtResource( 8 )
@@ -207,7 +203,7 @@ centered = false
 
 [node name="Tree Leaves" type="Sprite" parent="Boss Area"]
 material = SubResource( 5 )
-position = Vector2( -1, 1 )
+position = Vector2( -29, 0 )
 texture = ExtResource( 9 )
 centered = false
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Background Front Tree Leaves.png-427a66ef77a941b26a612e4ad2fa3496.stex"
+path="res://.import/Tutorial Background.png-13c41e010452ff3d83a248f73642ec1c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Background/Sprites/Background Front Tree Leaves.png"
-dest_files=[ "res://.import/Background Front Tree Leaves.png-427a66ef77a941b26a612e4ad2fa3496.stex" ]
+source_file="res://Background/Tutorial Background.png"
+dest_files=[ "res://.import/Tutorial Background.png-13c41e010452ff3d83a248f73642ec1c.stex" ]
 
 [params]
 
