@@ -6,8 +6,9 @@ var speed = 4.5
 var target = null
 
 func _ready():
-	look_vec = target.position - global_position
-	rotation = look_vec.angle()
+	if is_instance_valid(target):
+		look_vec = target.position - global_position
+		rotation = look_vec.angle()
 
 func _physics_process(delta):
 	move = Vector2.ZERO

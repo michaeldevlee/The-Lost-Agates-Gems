@@ -146,9 +146,9 @@ func take_damage(amount):
 	show_hitMarker()
 	hp -= amount
 	
-func update_UI():
-	get_node("../HP").text = 'HP: ' + str(hp)
-	get_node("../Mode").text = "BOSS STAGE: " + str(animation)
+#func update_UI():
+#	get_node("../HP").text = 'HP: ' + str(hp)
+#	get_node("../Mode").text = "BOSS STAGE: " + str(animation)
 
 # disable after testing
 func manipulate_boss_hp():

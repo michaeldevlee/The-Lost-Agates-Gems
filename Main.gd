@@ -5,3 +5,4 @@ func _ready():
 
 func restart_game():
 	get_tree().reload_current_scene()
+
