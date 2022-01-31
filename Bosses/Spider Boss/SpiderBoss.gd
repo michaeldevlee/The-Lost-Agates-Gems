@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 const ATTACK_THRESHOLD = 5
+const PRESTART = 'prestart'
 const IDLE = 'idle'
 const PEW_LASER = 'pew_laser_eyes'
 const ENERGY_BALL = 'energy_ball'
@@ -10,32 +11,47 @@ const TrackingMissile = preload('res://Bosses/Spider Boss/Attacks/TrackingMissil
 const PewLaser = preload('res://Bosses/Spider Boss/Attacks/PewLaser.tscn')
 const EnergyBall = preload('res://Bosses/Spider Boss/Attacks/EnergyBall.tscn')
 
+onready var sprite = $Sprite
 onready var left_eye_spawn_point = get_node("LeftEye")
 onready var right_eye_spawn_point = get_node("RightEye")
 onready var left_corner_rocket_spawn_point = get_node("LeftCornerRocket")
 onready var right_corner_rocket_spawn_point = get_node("RightCornerRocket")
 onready var energy_ball_spawn_point = get_node("EnergyBallPos")
 
+var sprite_color
+var sprite_hit_color
 var _anim_tree
 var state_machine
-var animation = IDLE
+var animation = PRESTART
 var _idle_count = 0
 var _idle_rate = 1
 var target
 
-var hp = 100
+var hp = 2000
 
-func register_signals():
-	EventBus.connect("boss_hit", self, "take_damage")
+func activate_boss(boss_name):
+	if boss_name == 'Spider':
+		print('inside conditional')
+		_anim_tree.set_active(true)
+		animation = IDLE
+		state_machine.travel(IDLE)
+	
+func show_hitMarker():
+	sprite.set_modulate(sprite_hit_color)
+	yield(get_tree().create_timer(0.1),"timeout")
+	sprite.set_modulate(sprite_color)
 
 func _ready():
-	register_signals()
+	sprite_color = Color(sprite.modulate.r,sprite.modulate.g,sprite.modulate.b)
+	sprite_hit_color = Color(sprite.modulate.r + 0.3, sprite.modulate.g + 0.3, sprite.modulate.b)
+	EventBus.connect("boss_hit", self, "take_damage")
+	EventBus.connect("boss_started", self, "activate_boss")
 	_anim_tree = $AnimationTree
 	state_machine = _anim_tree.get('parameters/playback')
-	state_machine.start("idle")
-	state_machine.travel(IDLE)
+
 	
 func find_target():
+	print('finding target')
 	target = get_parent().get_node("Player")
 
 func increase_idle_count():
@@ -127,7 +143,7 @@ func shoot_energy_ball():
 		increment_location += 100
 
 func take_damage(amount):
-	var old_hp = hp
+	show_hitMarker()
 	hp -= amount
 	
 func update_UI():
@@ -142,5 +158,6 @@ func manipulate_boss_hp():
 		hp += 1
 
 func _physics_process(delta):
-	manipulate_boss_hp()
-	update_UI()
+	pass
+#	manipulate_boss_hp()
+#	update_UI()
