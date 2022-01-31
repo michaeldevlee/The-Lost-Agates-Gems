@@ -39,7 +39,7 @@ func _on_Timer_timeout():
 func _on_EnergyBall_body_entered(body):
 	if body.get_name() == 'Player':
 		print('Hit with EnergyBall')
-		EventBus.emit_signal('player_hit', 20)
+		EventBus.emit_signal('player_hit', 200)
 		explode()
 	elif body.get_name() == 'EnergyBall':
 		print('exploded with self')

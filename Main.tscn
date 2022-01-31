@@ -51,5 +51,5 @@ limit_top = -270
 
 [node name="Menus" parent="." instance=ExtResource( 11 )]
 
-[node name="StaticBody2D" parent="." instance=ExtResource( 7 )]
+[node name="Spider" parent="." instance=ExtResource( 7 )]
 position = Vector2( -878, 140 )

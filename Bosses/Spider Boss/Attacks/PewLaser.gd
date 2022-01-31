@@ -23,5 +23,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_PewLaser_body_entered(body):
 	if body.get_name() == 'Player':
 		print('Player hit with laser')
-		EventBus.emit_signal("player_hit", 5)
+		EventBus.emit_signal("player_hit", 50)
 		queue_free()
