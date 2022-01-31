@@ -62,10 +62,10 @@ func increase_idle_count():
 	_idle_count += 1
 	var should_attack = _idle_count > ATTACK_THRESHOLD
 
-	if hp < 400 and should_attack:
+	if hp < 1000 and should_attack:
 		_idle_count = 0
 		transition_to_activate_laser_hellfire()
-	elif hp < 700 and should_attack:
+	elif hp < 3000 and should_attack:
 		_idle_count = 0
 		transition_to_shoot_charging_laser()
 	elif should_attack:
