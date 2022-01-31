@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-const ATTACK_THRESHOLD = 5
+const ATTACK_THRESHOLD = 4
 const PRESTART = 'prestart'
 const IDLE = 'idle'
 const PEW_LASER = 'pew_laser_eyes'
@@ -27,7 +27,7 @@ var _idle_count = 0
 var _idle_rate = 1
 var target
 
-var hp = 2000
+var hp = 4000
 
 func activate_boss(boss_name):
 	if boss_name == 'Spider':
@@ -49,7 +49,6 @@ func _ready():
 	_anim_tree = $AnimationTree
 	state_machine = _anim_tree.get('parameters/playback')
 
-	
 func find_target():
 	print('finding target')
 	target = get_parent().get_node("Player")
@@ -60,7 +59,7 @@ func increase_idle_count():
 
 	var rng = int(rand_range(0, 100))
 	
-	if hp < 10 and should_attack:
+	if hp < 400 and should_attack:
 		_idle_count = 0
 		_idle_rate = rand_range(2, 3)
 		animation = PEW_LASER
@@ -72,7 +71,7 @@ func increase_idle_count():
 		else:
 			animation = TRACKING_MISSILES
 			shoot_tracking_missiles()
-	elif hp < 40 and _idle_count > ATTACK_THRESHOLD:
+	elif hp < 2000 and _idle_count > ATTACK_THRESHOLD:
 		_idle_count = 0
 		_idle_rate = rand_range(1, 2)
 		if rng > 66:
@@ -84,7 +83,7 @@ func increase_idle_count():
 		else:
 			animation = PEW_LASER
 			pew_laser_eyes()
-	elif hp < 75 and _idle_count > ATTACK_THRESHOLD:
+	elif hp < 3333 and _idle_count > ATTACK_THRESHOLD:
 		_idle_count = 0
 		if rng > 60:
 			animation = ENERGY_BALL
@@ -158,6 +157,8 @@ func manipulate_boss_hp():
 		hp += 1
 
 func _physics_process(delta):
-	pass
-#	manipulate_boss_hp()
-#	update_UI()
+	if(hp <= 0):
+		if _anim_tree.active:
+			EventBus.emit_signal("screen_animation_initiated", "BOSS_DEATH")
+			_anim_tree.set_active(false)
+		show_hitMarker()

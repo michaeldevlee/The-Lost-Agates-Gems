@@ -38,7 +38,7 @@ func _on_Timer_timeout():
 	
 func _on_TrackingMissile_body_entered(body):
 	if body.get_name() == 'Player':
-		EventBus.emit_signal('player_hit', 10)
+		EventBus.emit_signal('player_hit', 100)
 		print('missile hit player')
 		explode()
 	elif body.get_name() == 'TrackingMissile':

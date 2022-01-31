@@ -13,8 +13,8 @@ func initialize_boss_stats(boss_name):
 			max_value = 5000
 			value = max_value
 		"Spider":
-			max_value = 15000 
+			max_value = 4000
 			value = max_value
-	
+
 func update_health(dmg):
 	value -= dmg
